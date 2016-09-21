@@ -37,13 +37,11 @@ if __name__ == '__main__':
 	current_comic = get_current_comic()
 
 	threads = []
-
 	for i in range(1, current_comic, 100):
 		# steps of 100
 		thread_obj = threading.Thread(target = xkcd_downloader, args = (i, min(i+100, current_comic+1)))
 		threads.append(thread_obj)
 		thread_obj.start()
-
 	for thread_obj in threads:
 		thread_obj.join()
 		# join - to wait until thread is comeplete

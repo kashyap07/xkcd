@@ -16,7 +16,7 @@ setup(
   author = 'Suhas Kashyap',
   author_email = 'kashyapsuhas07@gmail.com.com', 
   description = "Download all of xkcd comics",
-  long_description = "Use threadings to download all of xkcd comics really fast"
+  long_description = "Use threadings to download all of xkcd comics really fast",
   url = 'https://github.com/kashyap07/xkcd', 
   install_requires = [
     "beautifulsoup4>=4.4.1",
@@ -26,8 +26,6 @@ setup(
   classifiers = [
       'Development Status :: 3 - Alpha'
       'Natural Language :: English',
-      'Programming Language :: Python',
-      'Programming Language :: Python :: 3',
       'Programming Language :: Python :: 3.5',
   ],
   keywords = ['xkcd', 'threads', 'download', 'comic'], 
