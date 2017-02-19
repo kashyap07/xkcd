@@ -1,10 +1,13 @@
-#! /usr/bin/python3
-# todo: learn threading and speed this up
+'''
+	this is a docstring [for pylint]
+'''
 
 import re
 import os
-import requests
+
 import threading
+import requests
+
 from bs4 import BeautifulSoup
 
 os.makedirs('xkcd', exist_ok = True)
@@ -13,7 +16,7 @@ os.makedirs('xkcd', exist_ok = True)
 
 def get_current_comic():
 	src = requests.get('http://xkcd.com')
-	soup = BeautifulSoup(src.text, 'lxml')
+	soup = BeautifulSoup(src.text, "html.parser")
 	regex_string = soup.findAll(text = re.compile('Permanent link to this comic: http://xkcd.com/'))
 	current = regex_string[0][-5:-1]
 	return int(current)
@@ -21,7 +24,7 @@ def get_current_comic():
 def xkcd_downloader(start, end):
 	for number in range(start, end):
 		src = requests.get('http://xkcd.com/' + str(number))
-		soup = BeautifulSoup(src.text, 'lxml')
+		soup = BeautifulSoup(src.text, "html.parser")
 		comic_url = soup.select('#comic img') # div id:comic and elem:img
 		if comic_url != []:
 			print('Downloading comic ' + str(number) + ' ...')
